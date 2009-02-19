@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>Javascript Strings Tutorial</title>
+</head>
+<body>
+
+<!--
+################################################################################
+# LOGIC
+################################################################################
+-->
+
+<script type="text/javascript">
+<!-- 
+var d = new Date ();
+var time = d.getDate();
+
+document.write("<p>");
+document.write("Today is the " + time.toString() + "th" );
+document.write("</p>");
+
+confirm("Are you sure you still want to be awake at "+ d.getHours() + ":" + d.getMinutes() + "?");
+                                                
+                                                //A backslash can break up a string line
+prompt("Let me know you're serious about that. \
+       Tell me how you really feel:","How I really feel...");
+
+//Let's define a function with an input alias variables "something" and "some_other_thing".
+//These variables are passed as a list (not an array, although very similar).
+//We'll run this function later, in the HTML <form> below,
+//when the button it contains is clicked:
+function display_something( something, some_other_thing )
+{
+    var destroyed_upon_function_exit
+        = 'This variable is destroyed when the function exits :( ';
+    
+    alert( something + some_other_thing );
+    return [something, some_other_thing];
+    
+    //The function exits here!
+}
+
+//You can't do this here:
+//document.write( destroyed_upon_function_exit )
+
+-->
+</script>
+
+<form>
+<input type="button" value="Click me or perish!"
+onclick="display_something('please display this message. ', 'Oh and this message, too!')" >
+</form>
+
+<script type="text/javascript">
+//I'm going to be lazy about putting HTML comments in from now on, FYI.
+document.write("<br/>Let's call our function with two different variables!<br/>");
+var thing1 = 'This is a thing, in the form of a string! ';
+var thing2 = 'This is also a thing, in the form of a string!';
+
+//Call the function with these two variables:
+var array_of_values = display_something(thing1, thing2);
+document.write(
+    "Wow, this function returns an array of values, and they are: "
+    +"<ol>"
+        +"<li>"+ array_of_values[0] +"</li>"
+        +"<li>"+ array_of_values[1] +"</li>"
+    +"</ol>"
+);
+
+document.write("<hr/>");
+document.write("This is a for loop:<br/>");
+var i=0;
+for ( i=0; i<=5; i++ ){
+    //The first time through the loop "i" is 0 here
+    document.write("The number is " + i);
+    document.write("<br/>");
+    
+    //Because ++ comes after "i", "i" only increments after each for loop
+    //Try doing "++i" instead and see what you get. 
+}
+
+document.write("<hr/>");
+document.write("This is a while loop:<br/>");
+var i=0;
+while ( i<=5 ){
+    document.write("The number is " + i);
+    document.write("<br/>");
+    
+    i++ //Otherwise you will encounter an infinite loop!
+}
+
+document.write("<hr/>");
+
+//Note that x refers to the array index, not the array element itself
+//like many other languages
+var x;
+for (x in array_of_values){
+    document.write("<p>");
+    //THINK: Why do I have to escape the double quotes with a backslash?
+    document.write("This is an item in the \"array_of_values\" array: " + array_of_values[x] );
+    document.write("</p>");
+}
+
+</script>
+
+</body>
+</html>
