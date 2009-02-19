@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>Javascript Strings Tutorial</title>
+</head>
+<body>
+
+<!--
+################################################################################
+# BEFORE YOU BEGIN: Install FireBug in FireFox and play around with it using this file
+################################################################################
+-->
+
+<!--
+Above is an HTML comment beginning
+
+Below is an HTML comment ending:
+-->
+
+<!--
+################################################################################
+# STRING BASICS
+################################################################################
+-->
+
+<script type="text/javascript">
+<!-- 
+
+//<-- This is a Javascript comment
+
+//Note that browsers that do not support Javascript will display the Javascript code
+//as content unless you put it in HTML comments like we've done here.
+
+//Note that terminal semicolons are optional in Javascript:
+var string = "This is a string, to the left is the variable that holds it." //No semicolon
+document.write(string); //Semicolon
+
+-->
+</script>
+
+<script type="text/javascript">
+<!--
+//How to write a "new line" in Javascript? Use the <br/> tag in a web page, otherwise "\n" still interpolates.
+document.write("This is a string followed by a new line\n")
+document.write("This is a string followed by a break tag.<br/>")
+document.write("And this is the line that follows the break tag.")
+
+document.write("<br/><hr/>")
+
+//Now let's put all this in a function:
+
+function testing123 () {
+    document.write("This is a string followed by a new line\n")
+    document.write("This is a string followed by a break tag.<br/>")
+    document.write("And this is the line that follows the break tag.")
+}
+
+//GOOGLE: "concatenation"
+//Note that concatenation in Javascript (JS) is done with a "+" sign:
+document.write("<p>Here's our function's output: <i>(P.S. This string is in "
+               + "paragraph tags (&lt;p&gt;) so I don't need a &lt;br&gt; tag to break the "
+               + "line.)</i> </p>");
+
+//Now let's call the function:
+testing123();
+
+document.write("<hr/>");
+
+var this_is_an_array =  Array('first value', 'second value', 'third value');
+
+document.write("Let's try to print our array: " + this_is_an_array + "<br/>");
+
+document.write("<p>OK, let's print out the value of this_is_an_array.toString :</p>")
+document.write("<p>" + this_is_an_array.toString + "</p>")
+
+document.write("<p>Why does it look like that? Because .toString returns a function object, "
+               +"but we have to 'dereference' and call that function object by providing parentheses, "
+               +"which returns a string object. We write it "
+               +"like this: this_is_an_array.toString() </p>");
+
+document.write( this_is_an_array.toString() );
+
+document.write("<p>");
+document.write("Now let's call the toUpperCase function on the string that toString() returns, "
+               +"like this: this_is_an_array.toString().toUpperCase()");
+document.write("</p>");
+
+document.write( this_is_an_array.toString().toUpperCase() )
+
+window.alert("We're done!");
+-->
+</script>
+</body>
+</html>
