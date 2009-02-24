@@ -9,6 +9,11 @@ has keyword => (
     required => 1
 );
 
+###### In Perl, using Moose, you can have many packages/classes defined in a single file
+package Day2::this_is_the_core_code;
+use Moose;
+extends 'Day2';#Pretty much what it says: this code extends / inherits from / is the child of the Day2 package/class
+
 use LWP::UserAgent;
 
 # "@"+variable means "array-context" in Perl:
