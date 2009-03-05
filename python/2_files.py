@@ -8,6 +8,7 @@ file_location = '2_files/temp.txt'
 #THINK: What is `output`?
 #ANSWER: It is a "file object". It's not the file itself. It represents the file.
 output = open( file_location , 'w' ) #`w` means "write mode"
+
 output.write( a_string )
 output.write( another_string )
 #The filehandle will not close unless the parentheses are present on `close`:

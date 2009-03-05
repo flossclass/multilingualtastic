@@ -1,7 +1,10 @@
 #!/usr/bin/perl -w
+use strict;
 
 #This is the "main" package by default, without having to specify `package main;`
-use strict;
+print __PACKAGE__;#This is a special variable that contains the current package
+
+#DATASTRUCTURES:
 
 my @array = ('thing', 1, 2,);
 
@@ -41,7 +44,7 @@ has keyword => (
 
 
 ###### In Perl, using Moose, you can have many packages/classes defined in a single file
-package Day2::this_is_the_core_code;
+package Day2::CoreCode;
 use Moose;
 extends 'Day2';#Pretty much what it says: this code extends / inherits from / is the child of the Day2 package/class
 
@@ -68,7 +71,7 @@ my %another_hash = ('key3' => 3);
 @another_hash{ @simple_array } = ('zero', 'one', 'two', 'three', 'four',
                                   'five', 'six', 'seven');
 
-my $day2 = Day2->new( keyword => 'Palin' );#Create a new day2 object
+my $day2 = Day2::CoreCode->new( keyword => 'Obama' );#Create a new day2 object
 
 #$day_2->slogan('The debugger is NOT fun!');#Error!
 
@@ -130,7 +133,6 @@ sub cruise_the_internet {
             #on the same line--we'll take that chance:
             undef $line_of_words;
         }
-        
     }
 }
 
