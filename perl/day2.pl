@@ -3,8 +3,9 @@ use strict;
 
 #This is the "main" package by default, without having to specify `package main;`
 print __PACKAGE__;#This is a special variable that contains the current package
+print "\n"; #Newline
 
-#DATASTRUCTURES:
+############## DATASTRUCTURES ##############
 
 my @array = ('thing', 1, 2,);
 
@@ -32,7 +33,12 @@ my %colors_hash = (
     keys_can_only_refer_to_a_single_value => $array,
 );
 
-#DIRECTIONS: Please follow along in the debugger and DO NOT expect to understand everything
+#DIRECTIONS: Please follow along in the debugger
+#(by installing a trial of Komodo IDE, in addition to Komodo Edit)
+#and click on Debug->Step In in the Komodo menu bar.
+#Then hit OK, and once the debugger is started (on the first line of the program)
+#click on Debug->Step Over (there are shortcut buttons on the lower-right for this.
+#Mouse-over the buttons to see what they are. You want the Step Over button.)
 package Day2;
 use Moose;
 has slogan => (is => 'ro', default => sub{'The debugger is fun!'});
