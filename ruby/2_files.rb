@@ -22,3 +22,4 @@ logfile.close #You should (must) close the filehandle when done with it.
 logfile = File.new("2_files/log.txt", "a")
 logfile.puts('Add or append this line to the file.')
 
+#For more info, see http://www.techotopia.com/index.php/Working_with_Files_in_Ruby
