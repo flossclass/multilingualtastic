@@ -1,4 +1,34 @@
 #!/usr/bin/perl -w
+
+#This is the "main" package by default, without having to specify `package main;`
+use strict;
+
+my @array = ('thing', 1, 2,);
+
+push @array, "This is on the end";
+unshift @array, "This is on the front";
+
+print "$_\n" for @array;
+
+print "BREAK!\n";
+my $last_element = pop @array;
+my $first_element = shift @array;
+print "$_\n" for @array;
+
+if ('thing' eq 'thang'){
+    my $thing = 'thing'
+}
+
+
+#This is an array reference:
+my $array = \@array;
+
+my %colors_hash = (
+    apple => 'red',
+    orange => 'orange-colored',
+    keys_can_only_refer_to_a_single_value => $array,
+);
+
 #DIRECTIONS: Please follow along in the debugger and DO NOT expect to understand everything
 package Day2;
 use Moose;
@@ -8,6 +38,7 @@ has keyword => (
     isa => 'Str',  #Str = String
     required => 1
 );
+
 
 ###### In Perl, using Moose, you can have many packages/classes defined in a single file
 package Day2::this_is_the_core_code;
@@ -48,13 +79,16 @@ $day2->cruise_the_internet('I am cool');
 sub cruise_the_internet {
     my ($self, $first_argument) = @_;
     
+    my $var = 'This takes up space!!!!!';
+    
     die "You have to be cool in order to cruise the internet"
         unless $first_argument eq 'I am cool';
     
     print "Let's surf the net, dude... but, wait.. oh, what was our slogan again?\n";
     print "Oh yeah, it was \"" . $self->slogan . "\"\n";
     
-    #Debugger: Examine each object below closely, going step-by-step:
+    #Debugger: Examine each object below closely, using a trial of Komodo IDE (not Edit)
+    #going step-by-step:
     my $UserAgentObject = LWP::UserAgent->new;
     my $ResponseObject = $UserAgentObject->get('http://www.cnn.com');
     
@@ -71,15 +105,15 @@ sub cruise_the_internet {
         my $line_of_words;
         my $SPACE = " ";
         foreach my $word_s (@words_in_line){
-            # /\w/ means `match a word`
-            # /+/ means `match ONE or more of the preceding`
-            # .= means `concatenate to whatever is in the preceding variable`
+            #/\w/ means `match a word`
+            #/+/ means `match ONE or more of the preceding`
+            #.= means `concatenate to whatever is in the preceding variable`
             
             if ($word_s =~ /\w+/){
                 $line_of_words .= $word_s.$SPACE; 
             }
             
-            # //i means `ignore the case of the match`
+             #//i means `ignore the case of the match`
             if ($line_of_words and $line_of_words =~ /$keyword/i){
                 print "KEYWORD!: $line_of_words\n\n\n"
             }

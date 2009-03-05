@@ -63,6 +63,12 @@ this_is_an_array.each { |element|
 
 this_is_a_hash = {"key1" => "value1", "key3" => "value3", "key2" => "value2"}
 
+puts this_is_a_hash["key1"]
+
+this_is_an_array.each { |array_item|
+  print array_item
+}
+
 puts 'I put the hash keys in this order: "key1", "key3", "key2"'
 puts '...but they print in this order when I do an `each` on the hash:'
 
