@@ -1,0 +1,2 @@
+This is a string. Wow!
+Whoa, this is another string!

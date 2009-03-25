@@ -1,5 +1,44 @@
 #!/usr/bin/perl -w
-#DIRECTIONS: Please follow along in the debugger and DO NOT expect to understand everything
+use strict;
+
+#This is the "main" package by default, without having to specify `package main;`
+print __PACKAGE__;#This is a special variable that contains the current package
+print "\n"; #Newline
+
+############## DATASTRUCTURES ##############
+
+my @array = ('thing', 1, 2,);
+
+push @array, "This is on the end";
+unshift @array, "This is on the front";
+
+print "$_\n" for @array;
+
+print "BREAK!\n";
+my $last_element = pop @array;
+my $first_element = shift @array;
+print "$_\n" for @array;
+
+if ('thing' eq 'thang'){
+    my $thing = 'thing'
+}
+
+
+#This is an array reference:
+my $array = \@array;
+
+my %colors_hash = (
+    apple => 'red',
+    orange => 'orange-colored',
+    keys_can_only_refer_to_a_single_value => $array,
+);
+
+#DIRECTIONS: Please follow along in the debugger
+#(by installing a trial of Komodo IDE, in addition to Komodo Edit)
+#and click on Debug->Step In in the Komodo menu bar.
+#Then hit OK, and once the debugger is started (on the first line of the program)
+#click on Debug->Step Over (there are shortcut buttons on the lower-right for this.
+#Mouse-over the buttons to see what they are. You want the Step Over button.)
 package Day2;
 use Moose;
 has slogan => (is => 'ro', default => sub{'The debugger is fun!'});
@@ -9,8 +48,9 @@ has keyword => (
     required => 1
 );
 
+
 ###### In Perl, using Moose, you can have many packages/classes defined in a single file
-package Day2::this_is_the_core_code;
+package Day2::CoreCode;
 use Moose;
 extends 'Day2';#Pretty much what it says: this code extends / inherits from / is the child of the Day2 package/class
 
@@ -37,7 +77,7 @@ my %another_hash = ('key3' => 3);
 @another_hash{ @simple_array } = ('zero', 'one', 'two', 'three', 'four',
                                   'five', 'six', 'seven');
 
-my $day2 = Day2->new( keyword => 'Palin' );#Create a new day2 object
+my $day2 = Day2::CoreCode->new( keyword => 'Obama' );#Create a new day2 object
 
 #$day_2->slogan('The debugger is NOT fun!');#Error!
 
@@ -48,13 +88,16 @@ $day2->cruise_the_internet('I am cool');
 sub cruise_the_internet {
     my ($self, $first_argument) = @_;
     
+    my $var = 'This takes up space!!!!!';
+    
     die "You have to be cool in order to cruise the internet"
         unless $first_argument eq 'I am cool';
     
     print "Let's surf the net, dude... but, wait.. oh, what was our slogan again?\n";
     print "Oh yeah, it was \"" . $self->slogan . "\"\n";
     
-    #Debugger: Examine each object below closely, going step-by-step:
+    #Debugger: Examine each object below closely, using a trial of Komodo IDE (not Edit)
+    #going step-by-step:
     my $UserAgentObject = LWP::UserAgent->new;
     my $ResponseObject = $UserAgentObject->get('http://www.cnn.com');
     
@@ -71,15 +114,15 @@ sub cruise_the_internet {
         my $line_of_words;
         my $SPACE = " ";
         foreach my $word_s (@words_in_line){
-            # /\w/ means `match a word`
-            # /+/ means `match ONE or more of the preceding`
-            # .= means `concatenate to whatever is in the preceding variable`
+            #/\w/ means `match a word`
+            #/+/ means `match ONE or more of the preceding`
+            #.= means `concatenate to whatever is in the preceding variable`
             
             if ($word_s =~ /\w+/){
                 $line_of_words .= $word_s.$SPACE; 
             }
             
-            # //i means `ignore the case of the match`
+             #//i means `ignore the case of the match`
             if ($line_of_words and $line_of_words =~ /$keyword/i){
                 print "KEYWORD!: $line_of_words\n\n\n"
             }
@@ -96,7 +139,6 @@ sub cruise_the_internet {
             #on the same line--we'll take that chance:
             undef $line_of_words;
         }
-        
     }
 }
 
