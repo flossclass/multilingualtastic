@@ -2,7 +2,7 @@
 #DIRECTIONS: Please follow along in the debugger and DO NOT expect to understand everything
 package Day2;
 use Moose;
-has slogan => (is => 'ro', default => sub{'The debugger is fun!'});
+has slogan => (is => 'rw', default => sub{'The debugger is fun!'});
 has keyword => (
     is => 'rw',
     isa => 'Str',  #Str = String
@@ -10,7 +10,7 @@ has keyword => (
 );
 
 ###### In Perl, using Moose, you can have many packages/classes defined in a single file
-package Day2::this_is_the_core_code;
+package Day2::CoreCode;
 use Moose;
 extends 'Day2';#Pretty much what it says: this code extends / inherits from / is the child of the Day2 package/class
 
@@ -37,12 +37,15 @@ my %another_hash = ('key3' => 3);
 @another_hash{ @simple_array } = ('zero', 'one', 'two', 'three', 'four',
                                   'five', 'six', 'seven');
 
-my $day2 = Day2->new( keyword => 'Palin' );#Create a new day2 object
+my $day2 = Day2::CoreCode->new( keyword => 'Palin' );#Create a new day2 object
 
-#$day_2->slogan('The debugger is NOT fun!');#Error!
+#Without any parameters, the `slogan` is a getter for the day2 object (it gets a value)
+print "Today's slogan is..." ."'". $day2->slogan() ."'". "\n";
 
-print "Today's slogan is..." ."'". $day2->slogan ."'". "\n";
+#With a parameter, it is a setter:
+$day2->slogan('debugging is *sometimes* fun.');
 
+#Try altering the code so that this function dies!
 $day2->cruise_the_internet('I am cool');
 
 sub cruise_the_internet {
