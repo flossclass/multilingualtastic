@@ -88,4 +88,21 @@ foreach my $number (@array){
     }
 }
 
+# 4.) Use Net::Twitter to create a simple Perl script that updates your Twitter status.
+#     It should take as input (1) your username (2) your password (3) your status
+
+#INFO on how to do this:
+#@ARGV is a special array that accesses arguments passed through the command line to the perl script.
+
+# If you did not change the name of this script ("4.pl"), and you ran the following command,
+#       perl 4.pl "my_username" "my_password" "my status is this string of text"
+# you could access what you typed like so: (note that you *do* need the quotes around the three different strings of text)
+
+my $username = shift @ARGV;#The "shift" command takes the *first* element off of the array and returns it
+my $password = shift @ARGV;
+my $status = "@ARGV";#Convert the rest of @ARGV into a string
+
+#To use the Net::Twitter module, you'd put "use Net::Twitter;" at the top of this script.
+#Read the documentation here for usage examples: http://search.cpan.org/~mmims/Net-Twitter-3.04006/lib/Net/Twitter.pod
+#I have installed the most recent version of Net::Twitter on the server.
 
